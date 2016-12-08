@@ -4,6 +4,8 @@ from uber import *
 from util import *
 
 import sys
+allPassengers = []
+pool = False # or False :P
 # a class to hold everything
 class Graph:
     # init
@@ -47,7 +49,7 @@ class Graph:
         ran_dest = np.random.choice(tmp_nodes)
         newPass = Passenger(ran_start, ran_dest)
         self.passengers.append(newPass)
-
+        allPassengers.append(newPass)
 
     def pass_time(self):
         for step in range(self.max_time):
@@ -67,7 +69,8 @@ class Graph:
                 # ======================== search from passenger's perspective =================================
                 if not passenger.got_uber:
                     # print "self.ubers=", self.ubers
-                    closestUber = passenger.closestUber_pool(self.ubers)
+                    if pool: closestUber = passenger.closestUber_pool(self.ubers)
+                    else: closestUber = passenger.closestUber(self.ubers)
                     if closestUber:
                         closestUber.assigned_passenger.append(passenger)
                         # see which passenger is closer and go to the closer one
@@ -371,8 +374,6 @@ if __name__ == '__main__':
 
     # g = Graph(nodes=nodes, passengers=passengers, ubers=ubers)
 
-    
-
     # Ubers
     #u1 = Uber(carId=1, passengerCount=0, passengers=[], x=0, y=0, nodePath=[], currentNode=n1, destinationNode=None, currentTotalTravelCost=0, assigned_passenger = None)
     #2 = Uber(2, 0, [], 100, 100, [], n9, None, 0,None)
@@ -394,8 +395,6 @@ if __name__ == '__main__':
     g = Graph(nodes=nodes, passengers=passengerList, ubers=ubers)
 
     # graph it
-    
-
     #print "Uber1 pos:", u1.currentNode.x, u1.currentNode.y
     #print "Uber2 pos:", u2.currentNode.x, u2.currentNode.y
     #print "Uber3 pos:", u3.currentNode.x, u3.currentNode.y
@@ -419,12 +418,25 @@ if __name__ == '__main__':
     #print "Path:", path(1)
 
     # nodePathList = nodePathToList(path)
-
+    allPassengers += passengerList
 
     for i in range(40):
-        #print graph_map(g)
+
+        print graph_map(g)
 
         g.pass_time()
+    # print out passengers' waiting time
+    totalWait = 0
+    for p in allPassengers:
+        print "Wait time for", p.ID, " was", p.time
+        totalWait += p.time
+    print "avg wait time =", (1.0*totalWait/len(allPassengers))
+    if pool:
+        f = open("pool.txt", "a")
+    else:
+         f = open("noPool.txt", "a")
+    f.write(str(1.0*totalWait/len(allPassengers))+"\n")
+    f.close()
     # ubers = g.ubers
     # for u in ubers:
     #     print u.carId
