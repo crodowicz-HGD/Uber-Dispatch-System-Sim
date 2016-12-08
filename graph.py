@@ -52,8 +52,9 @@ class Graph:
         allPassengers.append(newPass)
 
     def pass_time(self):
+        varyCostOfNodes(self.nodes)
         for step in range(self.max_time):
-            # varyCostOfNodes(self.nodes)
+            
 
             # we can spawn according to time, or just random
             #if self.time == 5, or ...

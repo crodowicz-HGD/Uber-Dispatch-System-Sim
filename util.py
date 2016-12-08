@@ -298,6 +298,6 @@ def varyCostOfNodes(nodes):
         if node.traffic > 5.0:
             node.traffic = 5.0
 
-        print "Nodeid, traffic:", node.node_id, node.traffic
+        # print "Nodeid, traffic:", node.node_id, node.traffic
 
 
