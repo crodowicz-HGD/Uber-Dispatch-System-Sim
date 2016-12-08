@@ -273,9 +273,12 @@ def get_path_cost(path):
 # passed list of all nodes in graph
 # function called at every time step
 # Higher node.traffic means more traffic and cars wont move as much per turn
+
+# Next steps maybe to make nodes with most connecting edges more traffic prone
 def varyCostOfNodes(nodes):
     # traffic value affects the c value in ubermove
     for node in nodes:
+        # Randomly increase or decrease traffic at each node
         increaseDecrease = random.randint(0,1)
         if increaseDecrease == 0:
             # Increase

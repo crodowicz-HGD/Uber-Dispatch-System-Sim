@@ -113,6 +113,7 @@ class Uber:
 
 				print "Theta:", theta
 				# VARYING NODE COST TESTING
+				# Possible this could be changed to addition to fit astar
 				moveY = math.sin(theta) / targetNode.traffic
 				moveX = math.cos(theta) / targetNode.traffic
 
@@ -123,6 +124,7 @@ class Uber:
 				print "Move Y:", moveY
 				print "Move total", math.sqrt(moveX**2 + moveY**2)
 				# if c < 1.0:
+				# Possible this could be changed to addition to fit astar
 				if c < (1.0 / targetNode.traffic):
 					self.x = targetNode.x
 					self.y = targetNode.y
