@@ -152,6 +152,7 @@ class Uber:
 				print "New x:", self.x
 				print "New y:", self.y
 
+		# may need to be traffic cost 
 		self.currentTotalTravelCost += 1
 		print "-------------------------"
 

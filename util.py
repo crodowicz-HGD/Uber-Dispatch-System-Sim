@@ -291,8 +291,8 @@ def varyCostOfNodes(nodes):
         node.traffic += trafficModifier
         if node.traffic < 1.0:
             node.traffic = 1.0
-        if node.traffic > 2.0:
-            node.traffic = 2.0
+        if node.traffic > 5.0:
+            node.traffic = 5.0
         print "Nodeid, traffic:", node.node_id, node.traffic
 
 

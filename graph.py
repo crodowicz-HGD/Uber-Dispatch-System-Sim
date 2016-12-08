@@ -422,7 +422,7 @@ if __name__ == '__main__':
 
 
     for i in range(40):
-        print graph_map(g)
+        #print graph_map(g)
 
         g.pass_time()
     # ubers = g.ubers
@@ -440,5 +440,5 @@ if __name__ == '__main__':
         # print u.currentTotalTravelCost
         # print u.passengers
 
-    print graph_map(g)
+    #print graph_map(g)
 
