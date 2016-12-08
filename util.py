@@ -288,10 +288,10 @@ def varyCostOfNodes(nodes):
             trafficModifier = -random.uniform(0.0, 0.2)
         
         node.traffic += trafficModifier
-        if node.traffic < 0.5:
-            node.traffic = 0.5
-        if node.traffic > 1.5:
-            node.traffic = 1.5
+        if node.traffic < 1.0:
+            node.traffic = 1.0
+        if node.traffic > 2.0:
+            node.traffic = 2.0
         print "Nodeid, traffic:", node.node_id, node.traffic
 
 
