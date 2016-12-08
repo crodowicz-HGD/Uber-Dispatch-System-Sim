@@ -81,6 +81,3 @@ def spawn(n, nodes):
         print p.info()
 
     # return passengers
-
-
-
